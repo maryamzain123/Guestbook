@@ -5,10 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="index.js"></script>
+    <script src="model/note.js"></script>
+    <script src="model/comment.js"></script>
     <title>Guestbook App</title>
 </head>
-<body>
-    <h1> Welcome to our Wedding Guestbook</h1>
+<body class="container">
+    <img src ="C:\Users\Home\Desktop\il_340x270.3198265238_l1ea.jpg" style=" margin: 20px 0px 0px 350px">
+    <h5 style="font-family:Georgia; color:rgb(107, 77, 72); text-align:center"> Please leave a note for our newly wedded couple!</h5>
+
+    <form style="font-family:Georgia; color:rgb(107, 77, 72);">
+        Name <input type="text" id="name"><br>
+        Message <input type="text" id="content"> <br>
+        <button type="submit" style="background-color:brown; color:white;">submit</button>
+    </form>
+    <br>
     
+    <h6 style="font-family:Georgia; color:rgb(107, 77, 72);"> Guest Notes:</h6>
+    <div id="notes-container" style="font-family:Georgia; color:rgb(107, 77, 72);">
+        </div>
+
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
 </body>
 </html>
