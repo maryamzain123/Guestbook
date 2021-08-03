@@ -7,6 +7,8 @@ const clearContainer = (element) => {
 
 
 const startProgram = () => {
+    let form  = document.getElementById("form")
+    form.addEventListener('submit', Note.createNote)
     Note.fetchNotes()
      
 
