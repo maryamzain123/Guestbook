@@ -4,7 +4,7 @@ class Comment {
         this.id = id
         this.content = content
         this.likes = likes
-        this.notet_id = note_id
+        this.note_id = note_id
     }
 
     static likeComment(e){
@@ -25,7 +25,7 @@ class Comment {
         // debugger
         fetch(`http://localhost:3000/notes/${this.note_id}/comments/${this.id}`, configObj)
         .then(resp => resp.json())
-        .then(note_comments => note.updateComments(note_comments))
+        .then(note_comments => Note.updateComments(note_comments))
     }
 
 
