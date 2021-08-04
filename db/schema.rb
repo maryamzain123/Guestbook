@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2021_08_01_145956) do
 
   create_table "notes", force: :cascade do |t|
     t.string "name"
-    t.string "email"
     t.integer "likes", default: 0
     t.string "content"
     t.datetime "created_at", precision: 6, null: false

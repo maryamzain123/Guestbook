@@ -6,8 +6,7 @@ class NotesController < ApplicationController
         render json: notes.to_json(:include => :comments)
     end
 
-    def show
-    end
+ 
 
     def update
        
@@ -23,7 +22,6 @@ class NotesController < ApplicationController
     def create
        
     note = Note.new(note_params)
-        
     if note.save
         render json: note.to_json(:include => :comments)
     else

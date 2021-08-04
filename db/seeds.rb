@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies
-Note.create(name: "maryam", email: "smaryam.zain@gmail.com", content: "congratulations! you both look make a great couple")
-Note.create(name: "sara", email: "smaryam22@gmail.com", content: "Cant wait for you to have babies  good wishes to both of you!")
-Note.create(name: "maryam", email: "xayneed@gmail.com", content: "Love your whole wedding it was amazing would love to know who was your caterer")
+Note.create(name: "maryam", content: "congratulations! you both look make a great couple")
+Note.create(name: "sara",  content: "Cant wait for you to have babies  good wishes to both of you!")
+Note.create(name: "maryam", content: "Love your whole wedding it was amazing would love to know who was your caterer")
 
 
 
