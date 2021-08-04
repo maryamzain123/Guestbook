@@ -19,8 +19,6 @@ class Note {
         .then(json => {
             Note.renderNotes(json)
             
-
-            
         })
     }
 
@@ -46,14 +44,22 @@ class Note {
             },
             body: JSON.stringify(params)
         }
-
+try  {
         fetch("http://localhost:3000/notes", configObj)
         .then(resp => resp.json())
-        .then(json => {
+        .then(() => {
             e.target.children[0].value = ""
             e.target.children[2].value = ""
-            Note.renderNotes(json)
+            fetch("http://localhost:3000/notes")
+            .then(resp => resp.json())
+            .then(json => {
+                Note.renderNotes(json)
+            })
         })
+    }
+    catch {
+        
+    }
     }
 
     static createComment(e){
@@ -81,7 +87,7 @@ class Note {
 
 
     static renderNotes(notesInfo){
-        debugger
+        //debugger
         clearContainer(notesContainer())
         Note.all = []
         notesInfo.forEach(note => {
@@ -95,8 +101,6 @@ class Note {
             let ul = document.createElement("ul")
             let pLikes = document.createElement("p")
             let deleteButton = document.createElement('button')
-
-
 
             let noteComments = Comment.renderComments(note.comments)
             let form = document.createElement("form")
