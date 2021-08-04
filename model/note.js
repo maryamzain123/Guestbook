@@ -44,7 +44,7 @@ class Note {
             },
             body: JSON.stringify(params)
         }
-try  {
+
         fetch("http://localhost:3000/notes", configObj)
         .then(resp => resp.json())
         .then(() => {
@@ -56,10 +56,7 @@ try  {
                 Note.renderNotes(json)
             })
         })
-    }
-    catch {
-        
-    }
+  
     }
 
     static createComment(e){
