@@ -34,18 +34,27 @@ class Comment {
             let li = document.createElement('li')
             let div = document.createElement('div')
             let commentContent = document.createElement('p')
-            let commentLikes = document.createElement('p')
             let likeButton = document.createElement('button')
-            div.style.padding = "25px"
-            div.style.background = "#CCE5FF"
+            let commentLikes = document.createElement('p')
+
+            div.style.padding = "20px"
+            
+            div.style.height = "90px"
             div.className = "card"
+            div.style.backgroundColor = "rgba(255, 255, 255, 0.884)"
+            div.style.fontSize = "15px"
             commentContent.innerText = comment.content
-            commentLikes.innerText = comment.likes
             likeButton.innerText = "♥"
+            likeButton.className = "likebutton"
+            
+            commentLikes.innerText = comment.likes
+            commentLikes.className = "likes"
+
             likeButton.addEventListener("click", Comment.likeComment.bind(comment))
             div.appendChild(commentContent)
-            div.appendChild(commentLikes)
             div.appendChild(likeButton)
+            div.appendChild(commentLikes)
+
             li.appendChild(div)
             return li
         })

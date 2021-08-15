@@ -109,19 +109,27 @@ class Note {
             div.className = "card"
             h5.innerText = note.name
             h5.id = `name for ${note.id}`
+            h5.style.textAlign = "center"
             p.innerText = note.content
             p.id = `content for ${note.id}`
+            p.style.textAlign = "center"
+            p.style.marginBottom = "100px"
             pLikes.innerText = note.likes
             pLikes.id = `number of likes for ${note.id}`
+            pLikes.className = "notelikes"
             ul.id = `comments for ${note.id}`
-            likeButton.innerText = "❣"
+            likeButton.innerText = "♥"
+            likeButton.className = "notelikebutton"
             likeButton.addEventListener('click', Note.likeNote.bind(note))
-            deleteButton.innerText = "x"
+            deleteButton.innerText = "Delete"
+            deleteButton.className = "notedeletebutton"
+
             deleteButton.addEventListener("click", Note.deleteNote.bind(note))
             input.type = "text"
             input.placeholder = "Type comment here.."
             submitComment.type = "submit"
             submitComment.innerText = "Submit"
+            submitComment.className = "submitbutton"
             form.addEventListener("submit", Note.createComment.bind(note))
             form.appendChild(input)
             form.appendChild(submitComment)
@@ -129,8 +137,9 @@ class Note {
             
             div.appendChild(h5)
             div.appendChild(p)
-            div.appendChild(pLikes)
             div.appendChild(likeButton)
+            div.appendChild(pLikes)
+            
             div.appendChild(deleteButton)
 
             noteComments.forEach(li => ul.appendChild(li))
