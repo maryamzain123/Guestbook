@@ -1,0 +1,81 @@
+div.card {
+    background-color: rgb(233, 233, 233);
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+
+  }
+
+  input[type=submit] {
+    padding: 5px 15px;
+    background: rgb(150, 29, 85);
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: whitesmoke
+  }
+  
+
+  .submitbutton{
+    padding: 5px 15px;
+    background: rgb(150, 29, 85);
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: whitesmoke;
+
+  }
+
+  .likebutton {
+    position: absolute;
+    left: 880px;
+    top: 50px;
+    font-size: 20px;
+    color: rgb(150, 29, 85);
+    text-align: right;
+    
+    width: 50px
+  }
+
+  .likes {
+    position: absolute;
+    left: 886px;
+    top: 43px;
+    font-size: 11px;
+    
+  }
+
+  .notelikebutton {
+    position: absolute;
+    left: 520px;
+    top: 150px;
+    font-size: 20px;
+    color: rgb(150, 29, 85);
+    text-align: right;
+
+    width: 50px;
+    height: 25px;
+  }
+
+
+
+  .notelikes {
+    position: absolute;
+    left: 530px;
+    top: 143px;
+    font-size: 11px;
+  }
+
+  .notedeletebutton {
+    position: absolute;
+    left: 450px;
+    top: 150px;
+    height: 25px;
+
+    margin-bottom: 20px;
+    color: rgb(107, 77, 72);
+    
+
+  }
+
