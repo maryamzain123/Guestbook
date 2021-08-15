@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
         end 
     end 
 
+    
+
     def update
         # binding.pry
         comment = Comment.find(params[:id])
@@ -19,6 +21,8 @@ class CommentsController < ApplicationController
 
         end 
     end 
+
+    
 
 
 
