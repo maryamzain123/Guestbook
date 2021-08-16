@@ -1,5 +1,6 @@
 
-Name: Guestbook
+Name: 
+Guestbook
 
 
 Description:
@@ -13,9 +14,10 @@ Installation:
 Things you may want to cover:
 
 Ruby version:
-ruby '2.6.1'
+ruby '2.7.3'
 
-Rails version: rails', '~> 6.1.3', '>= 6.1.3.2'
+Rails version: rails', '~> 6.1.4'
+
 Contributing If you wish to contribute to this program please submit a pull request or a new issue.
 
 License This program is licensed under The MIT License (https://opensource.org/licenses/MIT). License file included.
