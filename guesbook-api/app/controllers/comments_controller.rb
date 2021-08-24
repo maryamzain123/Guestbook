@@ -25,9 +25,6 @@ class CommentsController < ApplicationController
     
 
 
-
-
-
 private 
 
 def comment_params

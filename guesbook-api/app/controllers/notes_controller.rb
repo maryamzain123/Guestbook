@@ -1,7 +1,6 @@
 class NotesController < ApplicationController
 
     def index
-
         notes = Note.all
         render json: notes.to_json(:include => :comments)
     end
@@ -9,9 +8,7 @@ class NotesController < ApplicationController
  
 
     def update
-       
         note = Note.find(params[:id])
-        
         if note.update(note_params)
             render json: note.to_json(:include => :comments)
         else
@@ -19,8 +16,7 @@ class NotesController < ApplicationController
         end
     end
 
-    def create
-       
+    def create  
     note = Note.new(note_params)
     if note.save
         render json: note.to_json(:include => :comments)
@@ -28,7 +24,6 @@ class NotesController < ApplicationController
         render json: {error: "There was an error"}
     end
 end
-
 
 
 def destroy 
