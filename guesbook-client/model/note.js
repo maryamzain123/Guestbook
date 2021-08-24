@@ -22,74 +22,8 @@ class Note {
         })
     }
 
-    static createNote(e){
-        
-        e.preventDefault();
-        let name = e.target.children[0].value
-        let content = e.target.children[2].value
-
-
-        let params = {
-           note: {
-               name: name,
-                content: content
-           }
-        }
-
-        let configObj = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(params)
-        }
-
-        fetch("http://localhost:3000/notes", configObj)
-        .then(resp => resp.json())
-        .then(() => {
-            e.target.children[0].value = ""
-            e.target.children[2].value = ""
-            fetch("http://localhost:3000/notes")
-            .then(resp => resp.json())
-            .then(json => {
-                Note.renderNotes(json)
-            })
-        })
-  
-    }
-
-    static createComment(e){
-        e.preventDefault();
-
-        let params = {
-           comment: {
-               content: e.target.children[0].value,
-               note_id: this.id
-           }
-        }
-        let configObj = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(params)
-        }
-        // debugger
-        fetch(`http://localhost:3000/notes/${this.id}/comments`, configObj)
-        .then(resp => resp.json())
-        .then(comments => Note.updateComments(comments))
-    }
-
-
-    static renderNotes(notesInfo){
-        //debugger
-        clearContainer(notesContainer())
-        Note.all = []
-        notesInfo.forEach(note => {
-            let new_note = new Note(note.id, note.name, note.content, note.likes, note.comments)
-        
+    static renderNote(note){
+        let new_note = new Note(note.id, note.name, note.content, note.likes, note.comments)
             new_note.save();
             let div = document.createElement("div")
             let h5 = document.createElement("h5")
@@ -148,8 +82,132 @@ class Note {
 
 
             notesContainer().appendChild(div)
-        })
 
+    }
+
+
+    static createNote(e){
+        
+        e.preventDefault();
+        let name = e.target.children[0].value
+        let content = e.target.children[2].value
+
+
+        let params = {
+           note: {
+               name: name,
+                content: content
+           }
+        }
+
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }
+
+        fetch("http://localhost:3000/notes", configObj)
+        .then(resp => resp.json())
+        .then((json) => {
+                Note.renderNote(json)
+            })
+        }
+    
+
+    static createComment(e){
+        e.preventDefault();
+
+        let params = {
+           comment: {
+               content: e.target.children[0].value,
+               note_id: this.id
+           }
+        }
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }
+        // debugger
+        fetch(`http://localhost:3000/notes/${this.id}/comments`, configObj)
+        .then(resp => resp.json())
+        .then(comments => Note.updateComments(comments))
+    }
+
+
+    static renderNotes(notesInfo){
+        clearContainer(notesContainer())
+        Note.all = []
+        
+        notesInfo.forEach(note => {
+            let new_note = new Note(note.id, note.name, note.content, note.likes, note.comments)
+            new_note.save();
+            // debugger
+
+            let div = document.createElement("div")
+            let h5 = document.createElement("h5")
+            let p = document.createElement("p")
+            let likeButton = document.createElement("button")
+            let ul = document.createElement("ul")
+            let pLikes = document.createElement("p")
+            let deleteButton = document.createElement('button')
+
+            let noteComments = Comment.renderComments(note.comments)
+            let form = document.createElement("form")
+            let input = document.createElement("input")
+            let submitComment = document.createElement("button")
+
+            div.id = `div ${note.id}`
+            div.style.padding = "20px"
+            div.className = "card"
+            h5.innerText = note.name
+            h5.id = `name for ${note.id}`
+            h5.style.textAlign = "center"
+            p.innerText = note.content
+            p.id = `content for ${note.id}`
+            p.style.textAlign = "center"
+            p.style.marginBottom = "100px"
+            pLikes.innerText = note.likes
+            pLikes.id = `number of likes for ${note.id}`
+            pLikes.className = "notelikes"
+            ul.id = `comments for ${note.id}`
+            likeButton.innerText = "♥"
+            likeButton.className = "notelikebutton"
+            likeButton.addEventListener('click', Note.likeNote.bind(note))
+            deleteButton.innerText = "Delete"
+            deleteButton.className = "notedeletebutton"
+
+            deleteButton.addEventListener("click", Note.deleteNote.bind(note))
+            input.type = "text"
+            input.placeholder = "Type comment here.."
+            submitComment.type = "submit"
+            submitComment.innerText = "Submit"
+            submitComment.className = "submitbutton"
+            form.addEventListener("submit", Note.createComment.bind(note))
+            form.appendChild(input)
+            form.appendChild(submitComment)
+            
+            
+            div.appendChild(h5)
+            div.appendChild(p)
+            div.appendChild(likeButton)
+            div.appendChild(pLikes)
+            
+            div.appendChild(deleteButton)
+
+            noteComments.forEach(li => ul.appendChild(li))
+            div.appendChild(ul)
+            div.appendChild(form)
+            
+            notesContainer().appendChild(div)
+        })
+ 
     }
 
 

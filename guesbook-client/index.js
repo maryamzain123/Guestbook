@@ -1,4 +1,4 @@
-let notesContainer = () => document.getElementById("notes-container")
+let notesContainer = () => document.getElementById('notes-container');
 
 const clearContainer = (element) => {
     while(element.firstChild){
@@ -11,8 +11,7 @@ const startProgram = () => {
     let form  = document.getElementById("form")
     form.addEventListener('submit', Note.createNote)
     Note.fetchNotes()
-     
-
+    
 }
 
 
